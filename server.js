@@ -1,10 +1,11 @@
 //requirements
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const db = require('./models');
-
+const jwt = require('jsonwebtoken');
 // Sets up our server to parse our request body for post/put/delete requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -19,10 +20,10 @@ const htmlRoutes = require('./routes/html-routes');
 app.use(apiRoutes);
 app.use(htmlRoutes);
 
+//start mongo connegtion
+mongoose.connect('mongodb://localhost/recipe-delivery-calendar', { useNewUrlParser: true });
 
-db.sequelize.sync().then(function(){
-//server listener
-app.listen(PORT, function(){
-    console.log(`App is listening on ${PORT}`)
-    }) 
-});
+//establishing port connection
+app.listen(PORT, function() {
+    console.log(`App currently running on port ${PORT}`);
+  });
