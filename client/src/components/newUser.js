@@ -1,6 +1,7 @@
 import React from 'react';
-import './newUser.css';
-import newUserAPI from '../api/newUserAPI';
+import axios from 'axios';
+import './NewUser.css';
+
 
 export default class Login extends React.Component {
     state = {
@@ -15,17 +16,7 @@ handleChange = (event) => {
     }
 
 submitClick = (event) => {
-    event.preventDefault();
-    newUserAPI.User(this.state).then((response) => {
-        console.log(response);
-        this.setState({
-            firstname:"",
-            lastname:"",
-            username:"",
-            password:""
-        })
-    })
-    console.log("New User onClick Function working")
+   console.log('NewUser OnClick Working')
 }
 
     render() {

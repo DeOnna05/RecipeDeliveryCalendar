@@ -1,12 +1,12 @@
 import React from 'react';
+import axios from 'axios';
 import './Login.css';
-import loginAPI from '../api/loginAPI';
-import UserAuth from './Auth';
 
 export default class Login extends React.Component {
     state = {
         username: "",
-        password: ""
+        password: "",
+        error: ""
     }
 
 handleChange = (event) => {
@@ -15,18 +15,19 @@ handleChange = (event) => {
 
 submitClick = (event) => {
     event.preventDefault();
-    loginAPI.User(this.state).then(res => localStorage.setItem('cool-jwt', res.data));
-
-        this.setState({
-            username:"",
-            password:""
-        });
-        console.log("Login onClick Function working");
-    }
+    axios.post('/getToken', {
+        username: this.state.username,
+        password:this.state.password
+    }).then(res => {
+        localStorage.setItem('login-jwt', res.data);
+        this.props.history.push('/protected')
+        }).catch(() => this.setState({
+        error: true
+    }));
+}
   
-
-
     render() {
+        const {error} = this.state;
         return (
             <div className="center">
                 <div className="card">
@@ -56,6 +57,7 @@ submitClick = (event) => {
                             onClick={event=>this.submitClick(event)}
                         />
                     </form>
+                    {error && <p>Invaid Username or Password</p>}
                 </div>
             </div>
         );

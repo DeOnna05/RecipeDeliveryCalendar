@@ -4,7 +4,8 @@ import './app.css';
 import Login from './components/Login';
 import Home from './components/Home';
 import Auth from './components/Auth';
-import newUser from './components/newUser';
+import Protected from './components/Protected';
+import newUser from './components/NewUser';
 
 
 export default class App extends Component {
@@ -14,10 +15,14 @@ export default class App extends Component {
       // <Login/>
       <BrowserRouter>
       <Switch>
+        <Route exact path="/" component={Home}/>
         <Route exact path="/NewUser" component={newUser}/>
         <Route exact path="/Login" component={Login}/>
-        <Route exact path="/Auth" component={Auth}/>
-        <Route exact path="/" component={Home} />
+        <Auth>
+        <Route exact path="/protected" component={Protected}/>
+        </Auth>
+       
+        
       </Switch>
       </BrowserRouter>
     )
