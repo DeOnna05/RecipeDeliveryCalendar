@@ -15,15 +15,14 @@ handleChange = (event) => {
 
 submitClick = (event) => {
     event.preventDefault();
-    axios.post('/getToken', {
+    console.log(this.state.username, "username");
+    console.log(this.state.password, "password");
+    axios.post('/api/login', {
         username: this.state.username,
         password:this.state.password
     }).then(res => {
-        localStorage.setItem('login-jwt', res.data);
-        this.props.history.push('/protected')
-        }).catch(() => this.setState({
-        error: true
-    }));
+        console.log(res, "response from login");
+    });
 }
   
     render() {

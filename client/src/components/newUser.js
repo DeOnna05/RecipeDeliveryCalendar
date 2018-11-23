@@ -1,23 +1,26 @@
 import React from 'react';
 import axios from 'axios';
-import './NewUser.css';
 
 
-export default class Login extends React.Component {
+export default class NewUser extends React.Component {
     state = {
-        firstname:"",
-        lastname:"",
-        username:"",
-        password:""
+        firstname: "",
+        lastname: "",
+        username: "",
+        password: "",
+        error: ""
     }
 
-handleChange = (event) => {
+    handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
-
-submitClick = (event) => {
-   console.log('NewUser OnClick Working')
-}
+    submitClick = (event) => {
+        event.preventDefault();
+        console.log(this.state);
+        axios.post('/api/newUser', this.state).then(res => {
+            console.log(res, "response from create user");
+        });
+    }
 
     render() {
         return (
