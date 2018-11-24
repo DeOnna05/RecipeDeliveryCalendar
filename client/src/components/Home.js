@@ -1,7 +1,6 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
-import { UncontrolledCarousel } from 'reactstrap';
-
+import { Container, Row, Col, Card, CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle, UncontrolledCarousel, Button } from 'reactstrap';
+// import logo from '../public/media/RecipeDeliveryLogo.png'
 const items = [
   {
     src: 'https://www.freedombykevin.com/wp-content/uploads/2017/09/Cooking-Techniques_Hero.jpg',
@@ -10,7 +9,7 @@ const items = [
     header: 'Save Time'
   },
   {
-    src: 'https://i0.wp.com/gymlion.com/wp-content/uploads/2015/03/Cooking.jpg',
+    src: 'https://siaaustria.com/wp-content/uploads/2018/03/meals.jpg',
     altText: 'Slide 2',
     caption: 'Save the recipes you love so your never left feeling uninspired. Your favorite recipes are right at your fingertips.',
     header: 'Save Recipes'
@@ -26,7 +25,18 @@ const items = [
 const Home = () => {
     return(
         <Container>
-           <UncontrolledCarousel items={items} />
+            <Card>
+                <CardBody>
+                    <CardTitle><img width="100%" src="" alt="Logo" /></CardTitle>
+                    <CardSubtitle>Card subtitle</CardSubtitle>
+                    <UncontrolledCarousel items={items} />
+                </CardBody>     
+                <CardBody>
+                
+                </CardBody>
+                <Button color="primary" size="lg" block>Block level button</Button>
+<Button color="secondary" size="lg" block>Block level button</Button>
+            </Card>     
         </Container>
     )
 }
