@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css'
-import { Col, Container, Card, CardBody, CardTitle, UncontrolledCarousel, Button } from 'reactstrap';
+import { Container, Card, CardBody, CardTitle, UncontrolledCarousel, Button } from 'reactstrap';
 // import logo from '../public/media/RecipeDeliveryLogo.png'
 const items = [
     {
@@ -22,6 +22,13 @@ const items = [
         header: 'Save Money'
     }
 ];
+
+UncontrolledCarousel.propTypes = {
+   
+    indicators: false, // default: true
+    
+    
+  };
 
 
 const Home = () => {
