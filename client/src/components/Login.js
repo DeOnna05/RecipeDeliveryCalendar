@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './Login.css';
-import { InputGroup, InputGroupAddon, InputGroupText, Input, Container, Row, Col, Card, CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle, UncontrolledCarousel, Button, Carousel } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input, Container, Card, CardBody } from 'reactstrap';
 
 
 
@@ -36,13 +36,6 @@ export default class Login extends React.Component {
                 <Card>
                     <CardBody>
                         <h1>Sign In</h1>
-                        {/* <Carousel.Item>
-                            <img width={900} height={500} alt="900x500" src="/carousel.png" />
-                            <Carousel.Caption>
-                                <h3>First slide label</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item> */}
                         <InputGroup>
                             <InputGroupAddon addonType="prepend">@</InputGroupAddon>
                             <Input className="username"

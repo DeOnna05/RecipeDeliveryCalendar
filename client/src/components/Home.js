@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Row, Col, Card, CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle, UncontrolledCarousel, Button } from 'reactstrap';
+import './Home.css'
+import { Col, Container, Card, CardBody, CardTitle, UncontrolledCarousel, Button } from 'reactstrap';
 // import logo from '../public/media/RecipeDeliveryLogo.png'
 const items = [
     {
@@ -11,7 +12,7 @@ const items = [
     {
         src: 'https://siaaustria.com/wp-content/uploads/2018/03/meals.jpg',
         altText: 'Slide 2',
-        caption: 'Save the recipes you love so your never left feeling uninspired. Your favorite recipes are right at your fingertips.',
+        caption: 'Your favorite recipes are right at your fingertips so your never left feeling uninspired.',
         header: 'Save Recipes'
     },
     {
@@ -22,23 +23,19 @@ const items = [
     }
 ];
 
+
 const Home = () => {
     return (
-        <Container>
-            <Card>
-                <CardBody>
+  
+        <Container >
+        
                     <CardTitle><img width="100%" src="" alt="Logo" /></CardTitle>
-                    <UncontrolledCarousel items={items} />
-                    <CardBody>                        
-                    </CardBody>
+                    <UncontrolledCarousel className="background" items={items}/>
                     <Button color="info" size="lg" block>Sign Up</Button>
                     <Button outline color="info" size="lg" block>Sign In</Button>
-                </CardBody>
-                <CardBody>
-
-                </CardBody>
-
-            </Card>
+          
+               
+         
         </Container>
     )
 }
