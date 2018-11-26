@@ -7,7 +7,6 @@ const config = require('../config.js');
 const dotenv = require('dotenv');
 dotenv.config();
 
-let token = ""
 //New user creation route
 router.post('/api/newUser', function(req, res) {
     db.users.find({username : req.body.username}).then(user => {

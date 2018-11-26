@@ -1,7 +1,6 @@
 import React from 'react';
 import './Home.css'
 import { Container, CardTitle, UncontrolledCarousel, Button } from 'reactstrap';
-// import logo from '../public/media/RecipeDeliveryLogo.png'
 const items = [
     {
         src: 'https://www.freedombykevin.com/wp-content/uploads/2017/09/Cooking-Techniques_Hero.jpg',
@@ -28,8 +27,7 @@ const Home = () => {
     return (
   
         <Container >
-            <CardTitle><img width="100%" src="" alt="Logo" /></CardTitle>
-            <UncontrolledCarousel className="background" indicators={false} items={items}/>
+            <UncontrolledCarousel className="carousel" indicators={false} items={items}/>
             <Button color="info" size="lg" block>Sign Up</Button>
             <Button outline color="info" size="lg" block>Sign In</Button>         
         </Container>
