@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css'
-import { Container, Card, CardBody, CardTitle, UncontrolledCarousel, Button } from 'reactstrap';
+import { Container, CardTitle, UncontrolledCarousel, Button } from 'reactstrap';
 // import logo from '../public/media/RecipeDeliveryLogo.png'
 const items = [
     {
@@ -23,26 +23,15 @@ const items = [
     }
 ];
 
-UncontrolledCarousel.propTypes = {
-   
-    indicators: false, // default: true
-    
-    
-  };
-
 
 const Home = () => {
     return (
   
         <Container >
-        
-                    <CardTitle><img width="100%" src="" alt="Logo" /></CardTitle>
-                    <UncontrolledCarousel className="background" items={items}/>
-                    <Button color="info" size="lg" block>Sign Up</Button>
-                    <Button outline color="info" size="lg" block>Sign In</Button>
-          
-               
-         
+            <CardTitle><img width="100%" src="" alt="Logo" /></CardTitle>
+            <UncontrolledCarousel className="background" indicators={false} items={items}/>
+            <Button color="info" size="lg" block>Sign Up</Button>
+            <Button outline color="info" size="lg" block>Sign In</Button>         
         </Container>
     )
 }

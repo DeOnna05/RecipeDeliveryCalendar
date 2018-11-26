@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import {Container, Col, Form, FormGroup, Input,  Button,} from 'reactstrap';
 
 export default class NewUser extends React.Component {
     state = {
@@ -24,20 +24,25 @@ export default class NewUser extends React.Component {
 
     render() {
         return (
-            <div className="center">
-                <div className="card">
-                    <h1>Sign Up</h1>
-                    <form>
-                        <input
-                            className="firstname"
-                            placeholder="First Name"
-                            id="firstname"
-                            name="firstname"
-                            type="text"
-                            value={this.state.firstname}
-                            onChange={event=>this.handleChange(event)}
-                        />
-                        <input
+        <Container className="signIn">            
+            <h1>Sign Up</h1>
+                <Form className="signInForm">
+                    <Col>
+                        <FormGroup>                        
+                            <Input
+                                className="firstname"
+                                placeholder="First Name"
+                                id="firstname"
+                                name="firstname"
+                                type="text"
+                                value={this.state.firstname}
+                                onChange={event=>this.handleChange(event)}
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col>
+                        <FormGroup>
+                        <Input
                             className="lastname"
                             placeholder="Last Name"
                             id="lastname"
@@ -46,7 +51,11 @@ export default class NewUser extends React.Component {
                             value={this.state.lastname}
                             onChange={event=>this.handleChange(event)}
                         />
-                        <input
+                        </FormGroup>
+                    </Col>
+                    <Col>
+                        <FormGroup>
+                        <Input
                             className="username"
                             placeholder="Email"
                             id="username"
@@ -55,7 +64,11 @@ export default class NewUser extends React.Component {
                             value={this.state.username}
                             onChange={event=>this.handleChange(event)}
                         />
-                        <input
+                        </FormGroup>
+                    </Col>
+                    <Col>
+                        <FormGroup>   
+                        <Input
                             className="password"
                             placeholder="Password"
                             name="password"
@@ -63,15 +76,20 @@ export default class NewUser extends React.Component {
                             value={this.state.password}
                             onChange={event=>this.handleChange(event)}
                         />
-                        <input
+                        </FormGroup>
+                    </Col>
+                    <Col>
+                        <FormGroup>
+                        <Input
                             className="submit"
                             value="SUBMIT"
                             type="submit"
                             onClick={event=>this.submitClick(event)}
                         />
-                    </form>
-                </div>
-            </div>
+                        </FormGroup>
+                    </Col>
+                    </Form> 
+        </Container>
         );
     }
 }

@@ -24,6 +24,8 @@ export default class Login extends React.Component {
             username: this.state.username,
             password: this.state.password
         }).then(res => {
+            const token = res.data.token;
+            localStorage.setItem('token', token);
             console.log(res, "response from login");
         });
     }

@@ -39,22 +39,26 @@ router.get('/api/user', function(req, res) {
     });
 });
 
-router.get('/api/login', function(req,res){
-    let token = req.headers['x-access-token'];
-    console.log(req.body)
-    if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
+router.post('/api/login', function(req,res){
+    db.users.findOne({username: req.body.username}, function(err, user){
+        console.log(user, "this is the user");
+        if (err) return res.status(500).send('Error on the server.');
+        if (!user) return res.status(404).send('No user found.');
+        var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+        if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+        var token = jwt.sign({ id: user._id }, config.secret, {
+          expiresIn: 86400 // expires in 24 hours
+        });
+        res.status(200).send({ auth: true, token: token });
+      });
     
-    jwt.verify(token, config.secret, function(err, decoded) {
-      if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-      
-      res.status(200).send(decoded);
-    });
   });
 
 
 //new recipe post route
 router.post('/api/newRecipe', function(req, res) {
     console.log(req.body);
+    //Check if there is a token
     db.recipes.create(req.body).then(function(data){
         res.json(data);
     })
