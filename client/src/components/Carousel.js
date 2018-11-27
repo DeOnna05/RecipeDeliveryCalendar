@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, UncontrolledCarousel, Button, Row, Col, Jumbotron } from 'reactstrap';
+import { UncontrolledCarousel, Row, Col, } from 'reactstrap';
 
 const items = [
     {
@@ -26,7 +26,7 @@ const Carousel = (prop) => {
         
 
             <Row>
-                <Col sm="12" md={{ size: 10, offset:1 }}>
+                <Col>
                     <UncontrolledCarousel indicators={false} items={items} />
                 </Col>
             </Row>

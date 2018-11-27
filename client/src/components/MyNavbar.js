@@ -1,5 +1,5 @@
 import React from 'react';
-import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Button} from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button} from 'reactstrap';
 
 const MyNavbar = (props) => {
   
@@ -12,10 +12,10 @@ const MyNavbar = (props) => {
       
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Button outline color="info" size="lg" href="/components/">Sign In</Button>
+                <Button outline color="info" size="lg" href="/Login">Sign In</Button>
               </NavItem>
               <NavItem>
-                <Button color="info" size="lg" href="https://github.com/reactstrap/reactstrap">Sign Up</Button>
+                <Button color="info" size="lg" href="/newUser">Sign Up</Button>
               </NavItem>              
             </Nav>
  
