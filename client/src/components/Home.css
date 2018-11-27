@@ -1,10 +1,27 @@
-.carousel {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+
+.d-block {
+  margin: 10px;
   width: 100%;
-  padding: 20px 10px;
-  background: inherit;
-  background-attachment: fixed;
+  height: 100%;
+  
 }
 
+.carousel-caption {
+  background-image: 
+  linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    )
+}
+
+.carousel-caption > h3 {
+  font-size: 30px;
+}
+
+.carousel-caption > p {
+  font-size: 20px;
+}
+
+.row::before{
+  
+}

@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import './Login.css';
-import { InputGroup, InputGroupAddon, Input, Container, Card, CardBody } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input, Container, Card, CardBody, Col, Row } from 'reactstrap';
+import Carousel from './Carousel';
 
 
 
@@ -33,44 +34,50 @@ export default class Login extends React.Component {
     render() {
         const { error } = this.state;
         return (
+            
+     
+                <Row>
+                    <Col sm="4">
+                        <Card>
+                            <CardBody>
+                                <h1>Sign In</h1>
+                                <InputGroup>
+                                    <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+                                    <Input className="username"
+                                        placeholder="Email"
+                                        id="username"
+                                        name="username"
+                                        type="text"
+                                        value={this.state.username}
+                                        onChange={event => this.handleChange(event)} />
+                                </InputGroup>
 
-            <Container>
-                <Card>
-                    <CardBody>
-                        <h1>Sign In</h1>
-                        <InputGroup>
-                            <InputGroupAddon addonType="prepend">@</InputGroupAddon>
-                            <Input className="username"
-                                placeholder="Email"
-                                id="username"
-                                name="username"
-                                type="text"
-                                value={this.state.username}
-                                onChange={event => this.handleChange(event)} />
-                        </InputGroup>
+                                <InputGroup>
+                                    <Input
+                                        className="password"
+                                        placeholder="Password"
+                                        name="password"
+                                        type="password"
+                                        value={this.state.password}
+                                        onChange={event => this.handleChange(event)} />
 
-                        <InputGroup>
-                            <Input
-                                className="password"
-                                placeholder="Password"
-                                name="password"
-                                type="password"
-                                value={this.state.password}
-                                onChange={event => this.handleChange(event)} />
+                                    <input
+                                        className="submit"
+                                        value="SUBMIT"
+                                        type="submit"
+                                        onClick={event => this.submitClick(event)}
+                                    />
 
-                            <input
-                                className="submit"
-                                value="SUBMIT"
-                                type="submit"
-                                onClick={event => this.submitClick(event)}
-                            />
-
-                            {error && <p>Invaid Username or Password</p>}
-                        </InputGroup>
-                    </CardBody>
-
-                </Card>
-            </Container>
+                                    {error && <p>Invaid Username or Password</p>}
+                                </InputGroup>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                    <Col sm="8">
+                    <Carousel/>
+                    </Col>
+                </Row>
+          
         );
     }
 }
