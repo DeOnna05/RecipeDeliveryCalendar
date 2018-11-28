@@ -35,7 +35,8 @@ export default class Home extends React.Component {
                     <Col md="4" sm="4" xs="12"></Col>
                     <Col md="4" sm="4" xs="12">
                         <form className="formBox">
-                            <img className="card-img-top" src="/media/RecipeDeliveryLogo.png" alt="Card image cap"></img>
+                        <img className="card-img-top" src="/media/RecipeDeliveryLogo.png" alt="Card image cap"></img>
+                        <h1 className="title">Sign In</h1>                            
                             <div className="form-group">
                                 <label for="email">Email: </label>
                                 <input type="text"
@@ -53,7 +54,7 @@ export default class Home extends React.Component {
                                     placeholder="Enter Password"
                                     value={this.state.password}
                                     onChange={event => this.handleChange(event)} />
-                                <small><a href="#">Already have an account? Sign In!</a></small>
+                                <small><a href="#">New User? Sign Up!</a></small>
                                 <div>
                                 </div>
                                 <br></br>
