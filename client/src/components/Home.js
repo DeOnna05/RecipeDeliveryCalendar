@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './Home.css';
+import { Container, Row, Col, Button } from 'reactstrap';
 
 export default class Home extends React.Component {
     state = {
@@ -28,66 +29,51 @@ export default class Home extends React.Component {
     }
 
     render() {
-    return (
-        <div>
-            <div className="limiter">
-            <div className="container-login100">
-                <div className="wrap-login100">
-                    <div className="login100-pic">
-                        <img src="http://www.bumblebee.com/wp-content/themes/bumblebee-responsive/library/img/bb-recipe-ia-hero.png" alt="IMG"/>
-                    </div>
-    
-                    <form className="login100-form validate-form">
-                        <span className="login100-form-title">
-                            Member Login
-                        </span>
-    
-                        <div className="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                            <input className="input100 username" type="text" name="email" placeholder="Email" value={this.state.username}
-                                            onChange={event => this.handleChange(event)}/>
-                            <span className="focus-input100"></span>
-                            <span className="symbol-input100">
-                                <i className="fa fa-envelope" aria-hidden="true"></i>
-                            </span>
-                        </div>
-    
-                        <div className="wrap-input100 validate-input" data-validate = "Password is required">
-                            <input className="input100 password" type="password" name="pass" placeholder="Password" value={this.state.password}
-                                            onChange={event => this.handleChange(event)}/>
-                            <span className="focus-input100"></span>
-                            <span className="symbol-input100">
-                                <i className="fa fa-lock" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        
-                        <div className="container-login100-form-btn">
-                            <button className="login100-form-btn submit" onClick={event => this.submitClick(event)}>
-                                Login
-                            </button>
-                        </div>
-    
-                        <div className="text-center p-t-12">
-                            <span className="txt1">
-                                Forgot
-                            </span>
-                            <a className="txt2" href="#">
-                                Username / Password?
-                            </a>
-                        </div>
-    
-                        <div className="text-center p-t-136">
-                            <a className="txt2" href="#">
-                                Create your Account
-                                <i className="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        </div>
-    )
-}
-}
+        return (
+            <Container fluid={true} className="background">
+                <Row>
+                    <Col md="4" sm="4" xs="12"></Col>
+                    <Col md="4" sm="4" xs="12">
+                        <form className="formBox">
+                            <img className="card-img-top" src="/media/RecipeDeliveryLogo.png" alt="Card image cap"></img>
+                            <div className="form-group">
+                                <label for="email">Email: </label>
+                                <input type="text"
+                                    className="form-control"
+                                    name="email"
+                                    placeholder="Enter Email"
+                                    value={this.state.username}
+                                    onChange={event => this.handleChange(event)} />
+                            </div>
+                            <div className="form-group">
+                                <label for="password">Password: </label>
+                                <input type="password"
+                                    className="form-control"
+                                    name="password"
+                                    placeholder="Enter Password"
+                                    value={this.state.password}
+                                    onChange={event => this.handleChange(event)} />
+                                <small><a href="#">Already have an account? Sign In!</a></small>
+                                <div>
+                                </div>
+                                <br></br>
+                                    <Button type="submit" className="submit btn-block btn-info"
+                                        onClick={event => this.submitClick(event)}>
+                                        Login
+                                </Button>
+                               
+                            </div>
+                        </form>
+                    </Col>
+                    <Col md="4" sm="4" xs="12"></Col>
+                </Row>
+            </Container >
 
 
+
+
+
+
+        )
+    }
+}
