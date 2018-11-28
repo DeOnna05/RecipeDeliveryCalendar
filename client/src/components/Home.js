@@ -35,10 +35,10 @@ export default class Home extends React.Component {
                     <Col md="4" sm="4" xs="12"></Col>
                     <Col md="4" sm="4" xs="12">
                         <form className="formBox">
-                        <img className="card-img-top" src="/media/RecipeDeliveryLogo.png" alt="Card image cap"></img>
-                        <h1 className="title">Sign In</h1>                            
+                            <img className="logo" src="/media/RecipeDeliveryLogo.png" alt="RecipeDeliveryLogo"></img>
+                            <h1 className="title">Sign In</h1>
                             <div className="form-group">
-                                <label for="email">Email: </label>
+                                <label>Email: </label>
                                 <input type="text"
                                     className="form-control"
                                     name="email"
@@ -47,23 +47,20 @@ export default class Home extends React.Component {
                                     onChange={event => this.handleChange(event)} />
                             </div>
                             <div className="form-group">
-                                <label for="password">Password: </label>
+                                <label>Password: </label>
                                 <input type="password"
                                     className="form-control"
                                     name="password"
                                     placeholder="Enter Password"
                                     value={this.state.password}
                                     onChange={event => this.handleChange(event)} />
-                                <small><a href="#">New User? Sign Up!</a></small>
-                                <div>
-                                </div>
-                                <br></br>
-                                    <Button type="submit" className="submit btn-block btn-info"
-                                        onClick={event => this.submitClick(event)}>
-                                        Login
-                                </Button>
-                               
+                                <small>New User?<a href="/newUser"> Sign Up!</a></small>
                             </div>
+                            <Button type="submit"
+                                className="submit btn-block btn-info"
+                                onClick={event => this.submitClick(event)}>
+                                Login
+                            </Button>
                         </form>
                     </Col>
                     <Col md="4" sm="4" xs="12"></Col>

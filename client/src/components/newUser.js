@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Container, Col, Form, FormGroup, Input,  Button,} from 'reactstrap';
+import { Container, Col, Row, Button, } from 'reactstrap';
 
 export default class NewUser extends React.Component {
     state = {
@@ -12,7 +12,7 @@ export default class NewUser extends React.Component {
     }
 
     handleChange = (event) => {
-        this.setState({[event.target.name]: event.target.value})
+        this.setState({ [event.target.name]: event.target.value })
     }
     submitClick = (event) => {
         event.preventDefault();
@@ -24,72 +24,68 @@ export default class NewUser extends React.Component {
 
     render() {
         return (
-        <Container className="signIn">            
-            <h1>Sign Up</h1>
-                <Form className="signInForm">
-                    <Col>
-                        <FormGroup>                        
-                            <Input
-                                className="firstname"
-                                placeholder="First Name"
-                                id="firstname"
-                                name="firstname"
+            <Container fluid={true} className="background">
+                <Row>
+                    <Col md="4" sm="4" xs="12"></Col>
+                    <Col md="4" sm="4" xs="12">
+                        <form className="formBox">
+                            <img className="logo" src="/media/RecipeDeliveryLogo.png" alt="RecipeDeliveryLogo"></img>
+                            <h1 className="title">Sign Up</h1>
+                            <br></br>
+                            <div className="form-group">       
+                                <input
+                                    className="firstname form-control"
+                                    placeholder="First Name"
+                                    name="firstname"
+                                    type="text"
+                                    value={this.state.firstname}
+                                    onChange={event => this.handleChange(event)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    className="lastname form-control"
+                                    placeholder="Last Name"
+                                    id="lastname"
+                                    name="lastname"
+                                    type="text"
+                                    value={this.state.lastname}
+                                    onChange={event => this.handleChange(event)}
+                                />
+                            </div>
+                            <div className="form-group">
+                            <input
+                                className="username form-control"
+                                placeholder="Email"
+                                id="username"
+                                name="username"
                                 type="text"
-                                value={this.state.firstname}
-                                onChange={event=>this.handleChange(event)}
+                                value={this.state.username}
+                                onChange={event => this.handleChange(event)}
                             />
-                        </FormGroup>
-                    </Col>
-                    <Col>
-                        <FormGroup>
-                        <Input
-                            className="lastname"
-                            placeholder="Last Name"
-                            id="lastname"
-                            name="lastname"
-                            type="text"
-                            value={this.state.lastname}
-                            onChange={event=>this.handleChange(event)}
-                        />
-                        </FormGroup>
-                    </Col>
-                    <Col>
-                        <FormGroup>
-                        <Input
-                            className="username"
-                            placeholder="Email"
-                            id="username"
-                            name="username"
-                            type="text"
-                            value={this.state.username}
-                            onChange={event=>this.handleChange(event)}
-                        />
-                        </FormGroup>
-                    </Col>
-                    <Col>
-                        <FormGroup>   
-                        <Input
-                            className="password"
-                            placeholder="Password"
-                            name="password"
-                            type="password"
-                            value={this.state.password}
-                            onChange={event=>this.handleChange(event)}
-                        />
-                        </FormGroup>
-                    </Col>
-                    <Col>
-                        <FormGroup>
-                        <Input
-                            className="submit"
-                            value="SUBMIT"
-                            type="submit"
-                            onClick={event=>this.submitClick(event)}
-                        />
-                        </FormGroup>
-                    </Col>
-                    </Form> 
-        </Container>
+                            </div>
+                            <div className="form-group">
+                            <input
+                                className="password form-control"
+                                placeholder="Password"
+                                name="password"
+                                type="password"
+                                value={this.state.password}
+                                onChange={event => this.handleChange(event)}
+                            />
+                            <small>Already have an account?<a href="/"> Sign In</a></small> 
+                            </div>
+                            <Button
+                                className="submit btn-block btn-info"
+                                type="submit"
+                                onClick={event => this.submitClick(event)}>
+                                Submit
+                        </Button>                       
+                    </form>
+                </Col>
+                <Col md="4" sm="4" xs="12"></Col>
+            </Row>
+        </Container >
         );
     }
 }
