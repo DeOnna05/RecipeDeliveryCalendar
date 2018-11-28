@@ -25,6 +25,10 @@ export default class Home extends React.Component {
             const token = res.data.token;
             localStorage.setItem('token', token);
             console.log(res, "response from login");
+            window.location.href="/dashboard"
+        }).catch(error => {
+            console.log(error)
+            this.setState({error: 'Incorrect username or password'})
         });
     }
 
@@ -37,11 +41,12 @@ export default class Home extends React.Component {
                         <form className="formBox">
                             <img className="logo" src="/media/RecipeDeliveryLogo.png" alt="RecipeDeliveryLogo"></img>
                             <h1 className="title">Sign In</h1>
+                            {this.state.error}
                             <div className="form-group">
                                 <label>Email: </label>
                                 <input type="text"
                                     className="form-control"
-                                    name="email"
+                                    name="username"
                                     placeholder="Enter Email"
                                     value={this.state.username}
                                     onChange={event => this.handleChange(event)} />
@@ -65,13 +70,8 @@ export default class Home extends React.Component {
                     </Col>
                     <Col md="4" sm="4" xs="12"></Col>
                 </Row>
+              
             </Container >
-
-
-
-
-
-
         )
     }
 }

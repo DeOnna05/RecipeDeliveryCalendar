@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './app.css';
 import Home from './components/Home';
-import Protected from './components/Protected';
+import Dashboard from './components/Dashboard';
 import NewUser from './components/NewUser';
-import MyNavbar from './components/MyNavbar';
 
 
 
@@ -14,14 +13,12 @@ export default class App extends Component {
   render() {
     return (
       
-      <BrowserRouter>
-  
+      <BrowserRouter>  
       <Switch>      
         <Route exact path="/" component={Home}/>
         <Route exact path="/NewUser" component={NewUser}/>    
-        <Route exact path="/protected" component={Protected}/>
+        <Route exact path="/dashboard" component={Dashboard}/>
       </Switch>
-
       </BrowserRouter>
     )
   }
