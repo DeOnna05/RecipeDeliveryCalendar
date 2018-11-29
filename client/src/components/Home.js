@@ -16,8 +16,7 @@ export default class Home extends React.Component {
 
     submitClick = (event) => {
         event.preventDefault();
-        console.log(this.state.username, "username");
-        console.log(this.state.password, "password");
+        
         axios.post('/api/login', {
             username: this.state.username,
             password: this.state.password
@@ -28,7 +27,11 @@ export default class Home extends React.Component {
             window.location.href="/dashboard"
         }).catch(error => {
             console.log(error)
-            this.setState({error: 'Incorrect username or password'})
+            this.setState({
+                username: '',
+                password: '',                
+                error: 'Incorrect username or password'
+            })
         });
     }
 

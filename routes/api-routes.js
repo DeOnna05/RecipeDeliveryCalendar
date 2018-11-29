@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const db = require('../models');
 const config = require('../config.js');
 const dotenv = require('dotenv');
+const VerifyToken = require('../client/src/components/VerifyToken');
 dotenv.config();
 
 //New user creation route
@@ -32,11 +33,14 @@ router.post('/api/newUser', function(req, res) {
    
 });
 
-router.get('/api/user', function(req, res) {
-    res.json({
-        message: 'get user route'
+router.get('/api/user', VerifyToken, function(req, res, next) {
+    db.users.findById(req.userId, {password: 0}, function (error, user) {
+        console.log(req.userId)
+      if (error) return res.status(500).send("There was a problem finding the user.");
+      if (!user) return res.status(404).send("No user found.");      
+      res.status(200).send(user);
     });
-});
+  });
 
 router.post('/api/login', function(req,res){
     db.users.findOne({username: req.body.username}, function(err, user){
@@ -53,7 +57,7 @@ router.post('/api/login', function(req,res){
     
   });
 
-  router.get('/logout', function(req, res) {
+  router.get('/api/logout', function(req, res) {
     res.status(200).send({ auth: false, token: null });
   });
 

@@ -1,5 +1,13 @@
 import React from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem, Button} from 'reactstrap';
+import axios from 'axios';
+
+
+// logout = (event) => {
+//     event.preventDefault();
+//     axios.get('/api/logout')
+//do I need something here?
+// }
 
 const MyNavbar = (props) => {
   
@@ -15,7 +23,7 @@ const MyNavbar = (props) => {
                 <Button outline color="info" size="lg" href="/Login">Sign In</Button>
               </NavItem>
               <NavItem>
-                <Button color="info" size="lg" href="/newUser">Sign Up</Button>
+                <Button color="info" size="lg" href="/" onChange={event => this.logout(event)}>Sign Out</Button>
               </NavItem>              
             </Nav> 
         </Navbar>
