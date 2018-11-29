@@ -18,11 +18,8 @@ router.post('/api/newUser', function(req, res) {
             newUser.password = hashedPassword;
            
             db.users.create(newUser).then(function (data) {
-                 let token = jwt.sign({ id: data._id }, process.env.SECRET , {
-                    expiresIn: 86400 // expires in 24 hours
-                  });
                   
-                  res.status(200).send({ auth: true, token: token });
+                  res.status(200)
             }).catch(function (error) {
                     res.json(error)
             })
@@ -53,8 +50,7 @@ router.post('/api/login', function(req,res){
           expiresIn: 86400 // expires in 24 hours
         });
         res.status(200).send({ auth: true, token: token });
-      });
-    
+      });    
   });
 
   router.get('/api/logout', function(req, res) {

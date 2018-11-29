@@ -3,7 +3,7 @@ const config = require('../../../config');
 
 function verifyToken(req, res, next) {
   let token = req.headers['x-access-token'];
-console.log(token)
+console.log(req.headers)
   if (!token)
     return res.status(403).send({ auth: false, message: 'No token provided.' });
   jwt.verify(token, config.secret, function(err, decoded) {

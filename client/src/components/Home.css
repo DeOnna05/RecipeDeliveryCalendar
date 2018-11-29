@@ -1,11 +1,8 @@
-*{
-  color: white;
-}
-
 .background {
   background: url('/media/OneTop_Black_Lifestyle_03.jpg') no-repeat;
   background-size: cover;
   height: 100vh;
+  color: white;
 }
 
 .formBox {

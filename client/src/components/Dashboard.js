@@ -1,6 +1,6 @@
 import React from 'react';
 import MyNavbar from './MyNavbar';
-import axious from 'axios';
+import axios from 'axios';
 
 export default class Dashboard extends React.Component {
 
@@ -9,14 +9,14 @@ export default class Dashboard extends React.Component {
         user: ""
     }
 
-   componentWillMount(){
-       axious.get('/api/user', {
-        //    user: this.state.firstname
+   componentDidMount(){
+       axios.get('/api/user', {
+            headers: {Authorization: localStorage.getItem('token')}
        }).then(res => {
             console.log(res)
             this.setState({
                 welcomeMessage: "Welcome"
-                // user: res.
+                
             })
        }).catch(error => {
            console.log(error)
@@ -27,7 +27,7 @@ export default class Dashboard extends React.Component {
 
    render(){
        return(
-           <MyNavbar user={this.state.user} />
+           <MyNavbar user={this.state.user}/>
        )
    }
 }

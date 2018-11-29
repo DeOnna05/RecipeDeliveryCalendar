@@ -59,7 +59,9 @@ export default class NewUser extends React.Component {
                                 placeholder="Email"
                                 id="username"
                                 name="username"
-                                type="text"
+                                type="email"
+                                pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required
+                                autoComplete="on"
                                 value={this.state.username}
                                 onChange={event => this.handleChange(event)}
                             />
