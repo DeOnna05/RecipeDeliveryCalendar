@@ -5,9 +5,6 @@ import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import NewUser from './components/NewUser';
 
-
-
-
 export default class App extends Component {
 
   render() {

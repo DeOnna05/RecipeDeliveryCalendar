@@ -12,13 +12,24 @@ export default class NewUser extends React.Component {
     }
 
     handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value })
+        this.setState({[event.target.name]: event.target.value})
     }
     submitClick = (event) => {
         event.preventDefault();
         console.log(this.state);
         axios.post('/api/newUser', this.state).then(res => {
             console.log(res, "response from create user");
+            console.log(res.data.status)
+            if(res.data.status === "User already exists"){
+            this.setState({
+                firstname: "",
+                lastname: "",
+                username: "",
+                password: "",
+                error: "User already exists. If you already have an account please click sign in below"
+            })
+            console.log(this.state.error)
+        }
         });
     }
 
@@ -32,6 +43,7 @@ export default class NewUser extends React.Component {
                             <img className="logo" src="/media/RecipeDeliveryLogo.png" alt="RecipeDeliveryLogo"></img>
                             <h1 className="title">Sign Up</h1>
                             <br></br>
+                            {<p className="highlight">{this.state.error}</p>}
                             <div className="form-group">       
                                 <input
                                     className="firstname form-control"
@@ -87,7 +99,7 @@ export default class NewUser extends React.Component {
                 </Col>
                 <Col md="4" sm="4" xs="12"></Col>
             </Row>
-        </Container >
+        </Container>
         );
     }
 }

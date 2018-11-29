@@ -44,7 +44,7 @@ export default class Home extends React.Component {
                         <form className="formBox">
                             <img className="logo" src="/media/RecipeDeliveryLogo.png" alt="RecipeDeliveryLogo"></img>
                             <h1 className="title">Sign In</h1>
-                            {this.state.error}
+                            <p className="highlight">{this.state.error}</p>
                             <div className="form-group">
                                 <label>Email: </label>
                                 <input type="text"
