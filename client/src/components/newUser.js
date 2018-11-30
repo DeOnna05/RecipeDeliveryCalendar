@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Container, Col, Row, Button, } from 'reactstrap';
+import './newUser.css';
+
 
 export default class NewUser extends React.Component {
     state = {
@@ -8,12 +10,19 @@ export default class NewUser extends React.Component {
         lastname: "",
         username: "",
         password: "",
-        error: ""
+        error: "",
+        emailError: ""
     }
 
     handleChange = (event) => {
+        console.log(event.target.checkValidity());
         this.setState({[event.target.name]: event.target.value})
+        // if([event.target.name] == "username" && ){
+        //     const regexPattern = RegEx(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+        //     regexPattern.text(event.target.value) ? "" : 'Please enter valid email address'
+        // }
     }
+
     submitClick = (event) => {
         event.preventDefault();
         console.log(this.state);
@@ -28,6 +37,7 @@ export default class NewUser extends React.Component {
                 password: "",
                 error: "User already exists. If you already have an account please click sign in below"
             })
+           // window.location = "/login"
             console.log(this.state.error)
         }
         });
@@ -72,7 +82,6 @@ export default class NewUser extends React.Component {
                                 id="username"
                                 name="username"
                                 type="email"
-                                pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required
                                 autoComplete="on"
                                 value={this.state.username}
                                 onChange={event => this.handleChange(event)}

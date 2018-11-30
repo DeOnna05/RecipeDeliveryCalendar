@@ -5,27 +5,44 @@ import { Col, Row } from 'reactstrap';
 const Scrollspy = (props) => {
 
     return (
-    <Row>
-        <Col>
-            <div id="list-example" className="list-group">
-                <a className="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-                <a className="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
-                <a className="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
-                <a className="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
-            </div>
-
-            <div data-spy="scroll" data-target="#list-example" data-offset="0" className="scrollspy-example">
-                <h4 id="list-item-1">Item 1</h4>
-                <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
-                <h4 id="list-item-2">Item 2</h4>
-                <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
-                <h4 id="list-item-3">Item 3</h4>
-                <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
-                <h4 id="list-item-4">Item 4</h4>
-                <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
-            </div>
-        </Col>
-    </Row>
+        <Row>
+            <Col xs="2" s="2" m="2">
+                <nav id="navbar-example3" class="navbar navbar-light bg-light">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link" href="#item-1">Item 1</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a>
+                            <a class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
+                        </nav>
+                        <a class="nav-link" href="#item-2">Item 2</a>
+                        <a class="nav-link" href="#item-3">Item 3</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
+                            <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+                        </nav>
+                    </nav>
+                </nav>
+            </Col>
+            <Col>
+                <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+                    <h4 id="item-1">Item 1</h4>
+                    <p>...</p>
+                    <h5 id="item-1-1">Item 1-1</h5>
+                    <p>...</p>
+                    <h5 id="item-1-2">Item 2-2</h5>
+                    <p>...</p>
+                    <h4 id="item-2">Item 2</h4>
+                    <p>...</p>
+                    <h4 id="item-3">Item 3</h4>
+                    <p>...</p>
+                    <h5 id="item-3-1">Item 3-1</h5>
+                    <p>...</p>
+                    <h5 id="item-3-2">Item 3-2</h5>
+                    <p>...</p>
+                </div>
+            </Col>
+        </Row>
 
     )
 }

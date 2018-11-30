@@ -3,11 +3,16 @@ import axios from 'axios';
 import Scrollspy from './Scrollspy'
 import './MyNavbar.css'
 
-// logout = (event) => {
-//     event.preventDefault();
-//     axios.get('/api/logout')
+const logout = (event) => {
+    event.preventDefault();
+    axios.get('/api/logout').then(res =>{ 
+      
+      localStorage.removeItem('token');
+
+      console.log(res);
+       window.location = '/';})
 // do I need something here?
-// }
+}
 
 const MyNavbar = (props) => {
 
@@ -24,7 +29,7 @@ const MyNavbar = (props) => {
           <a className="nav-link" id="listTab" data-toggle="tab" href="/List" role="tab">Shopping List</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" id="logoutTab" data-toggle="tab" href="/" role="tab" onChange={event => this.logout(event)}>Logout</a>
+          <a className="nav-link" id="logoutTab" data-toggle="tab" href="/" role="tab" onClick ={ (event) => logout(event)}>Logout</a>
         </li>
         <li className="nav-item">
           <a className="navbar-brand" id="logout" href="/"><img className="navLogo" src="/media/RecipeDeliveryLogo.png" alt="Logo" ></img></a>
