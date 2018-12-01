@@ -1,0 +1,17 @@
+.card-header {
+    text-align: center;
+    font-size: 17px;
+    color: black
+}
+
+.card-title {
+    color: black;
+}
+
+.card-text {
+    color: black;
+}
+
+.cardBtn {
+    margin: 2px !important;
+}
