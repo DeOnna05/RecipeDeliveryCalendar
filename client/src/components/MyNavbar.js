@@ -3,28 +3,41 @@ import axios from 'axios';
 import Scrollspy from './Scrollspy'
 import './MyNavbar.css'
 import Recipes from './Recipes'
-import { Container } from 'reactstrap'
-
-const logout = (event) => {
-  event.preventDefault();
-  axios.get('/api/logout').then(res => {
-    localStorage.removeItem('token');
-    console.log(res);
-    window.location = '/';
-  })
-}
+import { Container,Row } from 'reactstrap'
 
 export default class MyNavbar extends React.Component{
-state = {
-  recipes: []
-}
+  state = {
+    recipes: [],
+    activeElement: "Monday"
+  }
+
   componentDidMount(){
-    axios.get('/api/recipes').then(res => {
+    this.getRecipes(this.state.activeElement);
+  }
+  getRecipes = (day) =>{
+    axios.post(`/api/recipes/${day}`).then(res => {
+      console.log(res.data[0])
       console.log(res)
       this.setState({
         recipes:res.data
       })
     })
+  }
+  logout = (event) => {
+    event.preventDefault();
+    axios.get('/api/logout').then(res => {
+      localStorage.removeItem('token');
+      console.log(res);
+      window.location = '/';
+    })
+  }
+  
+   activeClass = (val) => {
+     console.log("lol", val)
+    this.setState({
+        activeElement: val
+    })
+    this.getRecipes(val)
   }
 
   render(){
@@ -42,7 +55,7 @@ state = {
           <a className="nav-link" id="listTab" data-toggle="tab" href="/List" role="tab">Shopping List</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" id="logoutTab" data-toggle="tab" href="/" role="tab" onClick={(event) => logout(event)}>Logout</a>
+          <a className="nav-link" id="logoutTab" data-toggle="tab" href="/" role="tab" onClick={(event) => this.logout(event)}>Logout</a>
         </li>
         <li className="nav-item">
           <a className="navbar-brand" id="logout" href="/"><img className="navLogo" src="/media/RecipeDeliveryLogo.png" alt="Logo" ></img></a>
@@ -58,8 +71,11 @@ state = {
       </div>
 
       <Container>
-      <Scrollspy/>
-      <br></br>
+      <Scrollspy 
+          activeClass={this.activeClass} 
+          activeElement={this.state.activeElement}/>
+      <br/>
+      <Row>
       {
         this.state.recipes.map((recipe, index) =>{
           return(
@@ -67,6 +83,7 @@ state = {
           )
         })
       }
+      </Row>
     </Container>
     </div>
 

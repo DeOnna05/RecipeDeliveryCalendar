@@ -10,15 +10,12 @@ dotenv.config();
 
 //New user creation route
 router.post('/api/newUser', function(req, res) {
-    db.users.find({username : req.body.username}).then(user => {
-       
+    db.users.find({username : req.body.username}).then(user => {       
         if(user.length == 0){
             const hashedPassword = bcrypt.hashSync(req.body.password, 8);
             let newUser = req.body;
-            newUser.password = hashedPassword;
-           
-            db.users.create(newUser).then(function (data) {
-                  
+            newUser.password = hashedPassword           
+            db.users.create(newUser).then(function (data) {    
                   res.status(200)
             }).catch(function (error) {
                     res.json(error)
@@ -57,10 +54,11 @@ router.post('/api/login', function(req,res){
   });
 
 //new recipe post route
-router.get('/api/recipes',  function(req, res) {
+router.post('/api/recipes/:dow',  function(req, res) {
     //Check if there is a token - check header for token
-    db.recipes.find({}).then(function(data){
-        console.log("ds", data)
+    console.log(req.params)
+    db.recipes.find({day: req.params.dow}).then(function(data){
+        console.log(data)
         res.json(data);
     })
     .catch(function(error){

@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 //New user schema
 const UserSchema = new Schema({
 
-    //do I just need users???
     username: {
         type: String,
         trim: true,
