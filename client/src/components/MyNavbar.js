@@ -5,13 +5,10 @@ import './MyNavbar.css'
 
 const logout = (event) => {
     event.preventDefault();
-    axios.get('/api/logout').then(res =>{ 
-      
+    axios.get('/api/logout').then(res =>{       
       localStorage.removeItem('token');
-
       console.log(res);
        window.location = '/';})
-// do I need something here?
 }
 
 const MyNavbar = (props) => {
@@ -43,7 +40,6 @@ const MyNavbar = (props) => {
         <div className="tab-pane fade" id="list" role="tabpanel">...</div>
         <div className="tab-pane fade" id="logout" role="tabpanel">...</div>
       </div>
-
       <Scrollspy/>
     </div>
   )

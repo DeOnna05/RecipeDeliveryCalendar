@@ -15,8 +15,7 @@ export default class Dashboard extends React.Component {
        }).then(res => {
             console.log(res)
             this.setState({
-                welcomeMessage: "Welcome"
-                
+                welcomeMessage: "Welcome"                
             })
        }).catch(error => {
            console.log(error)

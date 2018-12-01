@@ -1,7 +1,7 @@
 .background {
-  background: url('/media/OneTop_Black_Lifestyle_03.jpg') no-repeat;
+  background: url('https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1027892/1360/906/m1/fpnw/wm1/jhy9bzssjwkt5o7fxskrktvwl694hyaz0seetflsve4uzxwz2fwo5cp2kveuxx1i-.jpg?1456439150&s=de86b1161aa3a97d66ecbc3e5dc0f262') no-repeat;
   background-size: cover;
-  /* height: 100%; */
+  height: 100%;
   color: white;
 }
 

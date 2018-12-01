@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Container, Col, Row, Button, } from 'reactstrap';
 import './newUser.css';
 
-
 export default class NewUser extends React.Component {
     state = {
         firstname: "",
@@ -23,7 +22,7 @@ export default class NewUser extends React.Component {
         // }
     }
 
-    submitClick = (event) => {
+     submitClick = (event) => {
         event.preventDefault();
         console.log(this.state);
         axios.post('/api/newUser', this.state).then(res => {
@@ -37,7 +36,7 @@ export default class NewUser extends React.Component {
                 password: "",
                 error: "User already exists. If you already have an account please click sign in below"
             })
-           // window.location = "/login"
+           window.location = "/login"
             console.log(this.state.error)
         }
         });

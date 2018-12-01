@@ -26,8 +26,7 @@ router.post('/api/newUser', function(req, res) {
         }else {
             res.json({status: "User already exists"});
         }
-    })
-   
+    })   
 });
 
 router.get('/api/user', VerifyToken, function(req, res, next) {
@@ -59,7 +58,7 @@ router.post('/api/login', function(req,res){
 
 
 //new recipe post route
-router.post('/api/dashboard', function(req, res) {
+router.post('/api/dashboard', VerifyToken, function(req, res) {
     console.log(req.body);
     //Check if there is a token - check header for token
 

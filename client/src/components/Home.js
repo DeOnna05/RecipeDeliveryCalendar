@@ -11,7 +11,7 @@ export default class Home extends React.Component {
     }
 
     handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value })
+        this.setState({[event.target.name]: event.target.value })
     }
 
     submitClick = (event) => {
