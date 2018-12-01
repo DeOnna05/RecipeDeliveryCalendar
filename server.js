@@ -12,8 +12,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//using express and path to find files
-app.use(express.static('/public'));
+
 
 //routes
 apiRoutes = require('./routes/api-routes');

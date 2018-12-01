@@ -12,10 +12,10 @@ const RecipesSchema = new Schema({
 
     category: {
         type: String,
-        required: fakse},
+        required: true},
         
-    servings: {
-        type: Number, 
+    image: {
+        type: String, 
         required: false},
         
     ingredients: {
@@ -27,6 +27,5 @@ const RecipesSchema = new Schema({
         required: false}
 });
 //mongoose model function to establish Users schema
-const users = mongoose.model("recipes", UserSchema)
-
-module.exports = users;
+const Recipes = mongoose.model("recipes", RecipesSchema)
+module.exports = Recipes;

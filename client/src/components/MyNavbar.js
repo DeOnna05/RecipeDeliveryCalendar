@@ -14,8 +14,20 @@ const logout = (event) => {
   })
 }
 
-const MyNavbar = (props) => {
+export default class MyNavbar extends React.Component{
+state = {
+  recipes: []
+}
+  componentDidMount(){
+    axios.get('/api/recipes').then(res => {
+      console.log(res)
+      this.setState({
+        recipes:res.data
+      })
+    })
+  }
 
+  render(){
   return (
 
     <div>
@@ -48,12 +60,17 @@ const MyNavbar = (props) => {
       <Container>
       <Scrollspy/>
       <br></br>
-      <Recipes/>
+      {
+        this.state.recipes.map((recipe, index) =>{
+          return(
+            <Recipes key={index} recipe={recipe}/>
+          )
+        })
+      }
     </Container>
     </div>
 
     
-  )
+    )
+  }
 }
-
-export default MyNavbar;

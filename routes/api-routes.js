@@ -56,16 +56,15 @@ router.post('/api/login', function(req,res){
     res.status(200).send({ auth: false, token: null });
   });
 
-
 //new recipe post route
-router.post('/api/dashboard', VerifyToken, function(req, res) {
-    console.log(req.body);
+router.get('/api/recipes',  function(req, res) {
     //Check if there is a token - check header for token
-
-    db.recipes.create(req.body).then(function(data){
+    db.recipes.find({}).then(function(data){
+        console.log("ds", data)
         res.json(data);
     })
     .catch(function(error){
+        console.log(error)
         res.json(error)
     });
 });
