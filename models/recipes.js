@@ -16,6 +16,10 @@ const RecipesSchema = new Schema({
     image: {
         type: String, 
         required: false},
+
+    caption: {
+        type: String, 
+        required: false},
         
     ingredients: {
         type: Array, 

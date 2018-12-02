@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Container, Col, Row, Button, } from 'reactstrap';
+import {Link} from 'react-router-dom';
 import './newUser.css';
 
 export default class NewUser extends React.Component {
@@ -10,36 +11,45 @@ export default class NewUser extends React.Component {
         username: "",
         password: "",
         error: "",
-        emailError: ""
+        emailError: "",
+        signIn: ""
     }
 
     handleChange = (event) => {
-        console.log(event.target.checkValidity());
-        this.setState({[event.target.name]: event.target.value})
-        // if([event.target.name] == "username" && ){
-        //     const regexPattern = RegEx(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
-        //     regexPattern.text(event.target.value) ? "" : 'Please enter valid email address'
-        // }
+        if([event.target.name] == "username" && event.target.checkValidity() === false ) {
+           this.setState({emailError: true, [event.target.name]: event.target.value});
+        }else {
+            
+            this.setState({[event.target.name]: event.target.value, emailError:false})
+        }
     }
 
      submitClick = (event) => {
         event.preventDefault();
         console.log(this.state);
-        axios.post('/api/newUser', this.state).then(res => {
-            console.log(res, "response from create user");
-            console.log(res.data.status)
-            if(res.data.status === "User already exists"){
-            this.setState({
-                firstname: "",
-                lastname: "",
-                username: "",
-                password: "",
-                error: "User already exists. If you already have an account please click sign in below"
-            })
-           window.location = "/login"
-            console.log(this.state.error)
+        if(!this.state.emailError && this.state.username !== ""){
+            axios.post('/api/newUser', this.state).then(res => {
+                console.log(res, "response from create user");
+                console.log(res.data.status)
+                if(res.data.status === "User already exists"){
+                this.setState({
+                    firstname: "",
+                    lastname: "",
+                    username: "",
+                    password: "",
+                    error: "User already exists. Please ",
+                    signIn: "sign in."
+                })
+                console.log(this.state.error)
+            }
+            });
+        }else {
+            //CHANGE TO MODAL
+            alert('Please enter valid email address');
         }
-        });
+       //ADD SECOND MODAL HERE SAYING ACCOUNT WAS CREATED SUCCESSFULLY PLEASE LOGIN
+            window.location = "/"
+            
     }
 
     render() {
@@ -52,7 +62,7 @@ export default class NewUser extends React.Component {
                             <img className="logo" src="/media/RecipeDeliveryLogo.png" alt="RecipeDeliveryLogo"></img>
                             <h1 className="title">Sign Up</h1>
                             <br></br>
-                            {<p className="highlight">{this.state.error}</p>}
+                            {<p className="highlight">{this.state.error}<Link to="/">{this.state.signIn}</Link></p>}
                             <div className="form-group">       
                                 <input
                                     className="firstname form-control"
@@ -85,6 +95,7 @@ export default class NewUser extends React.Component {
                                 value={this.state.username}
                                 onChange={event => this.handleChange(event)}
                             />
+                            { this.state.emailError ? <p className="highlight">Invalid Email</p> : ''}
                             </div>
                             <div className="form-group">
                             <input

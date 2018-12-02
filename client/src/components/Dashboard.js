@@ -13,7 +13,7 @@ export default class Dashboard extends React.Component {
        axios.get('/api/user', {
             headers: {Authorization: localStorage.getItem('token')}
        }).then(res => {
-            console.log(res)
+            console.log(res, "results from dashboard")
             this.setState({
                 welcomeMessage: "Welcome"                
             })

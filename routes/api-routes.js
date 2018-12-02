@@ -54,10 +54,10 @@ router.post('/api/login', function(req,res){
   });
 
 //new recipe post route
-router.post('/api/recipes/:dow',  function(req, res) {
+router.post('/api/recipes/:day', VerifyToken, function(req, res) {
     //Check if there is a token - check header for token
-    console.log(req.params)
-    db.recipes.find({day: req.params.dow}).then(function(data){
+    console.log(req.params, "in get res")
+    db.recipes.find({day: req.params.day}).then(function(data){
         console.log(data)
         res.json(data);
     })

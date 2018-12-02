@@ -1,28 +1,31 @@
 import React from 'react';
 import axios from 'axios';
-import Scrollspy from './Scrollspy'
-import './MyNavbar.css'
-import Recipes from './Recipes'
-import { Container,Row } from 'reactstrap'
+import Scrollspy from './Scrollspy';
+import './MyNavbar.css';
+import Recipes from './Recipes';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Container, Row } from 'reactstrap';
 
 export default class MyNavbar extends React.Component{
   state = {
     recipes: [],
-    activeElement: "Monday"
+    activeElement: "Monday",
+    modal: false
   }
 
   componentDidMount(){
     this.getRecipes(this.state.activeElement);
   }
+
   getRecipes = (day) =>{
     axios.post(`/api/recipes/${day}`).then(res => {
       console.log(res.data[0])
-      console.log(res)
+      console.log(res, "recipes")
       this.setState({
         recipes:res.data
       })
     })
   }
+
   logout = (event) => {
     event.preventDefault();
     axios.get('/api/logout').then(res => {
@@ -40,6 +43,14 @@ export default class MyNavbar extends React.Component{
     this.getRecipes(val)
   }
 
+  
+  toggle = (event) => {
+    event.preventDefault();
+  this.setState({
+    modal: !this.state.modal
+  });
+}
+
   render(){
   return (
 
@@ -49,10 +60,7 @@ export default class MyNavbar extends React.Component{
           <a className="nav-link active" id="menuTab" data-toggle="tab" href="/Menu" role="tab">Menu</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" id="queueTab" data-toggle="tab" href="/Queue" role="tab">Queue</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" id="listTab" data-toggle="tab" href="/List" role="tab">Shopping List</a>
+          <a className="nav-link" id="showAllTab" data-toggle="tab" href="#" role="tab">All Recipes</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" id="logoutTab" data-toggle="tab" href="/" role="tab" onClick={(event) => this.logout(event)}>Logout</a>
@@ -61,15 +69,7 @@ export default class MyNavbar extends React.Component{
           <a className="navbar-brand" id="logout" href="/"><img className="navLogo" src="/media/RecipeDeliveryLogo.png" alt="Logo" ></img></a>
         </li>
       </ul>
-
-      {/* test area for tabs */}
-      <div className="tab-content" id="myTabContent">
-        <div className="tab-pane fade show active" id="menu" role="tabpanel">TEST</div>
-        <div className="tab-pane fade" id="queue" role="tabpanel">...</div>
-        <div className="tab-pane fade" id="list" role="tabpanel">...</div>
-        <div className="tab-pane fade" id="logout" role="tabpanel">...</div>
-      </div>
-
+<br/>
       <Container>
       <Scrollspy 
           activeClass={this.activeClass} 
@@ -85,9 +85,28 @@ export default class MyNavbar extends React.Component{
       }
       </Row>
     </Container>
-    </div>
 
+    {/* Modal */}
     
+    <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}MODAL</Button>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+          <ModalBody>
+
+          <select class="custom-select">
+            <option selected>Choose Category</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+          </select>
+
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={this.toggle}>Submit</Button>{' '}
+            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
+    </div>    
     )
   }
 }

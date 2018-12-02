@@ -1,9 +1,6 @@
 import React from 'react';
-import MyNavbar from "./MyNavbar";
 
-
-const Scrollspy = (props) => (
-   
+const Scrollspy = (props) => (   
     
         <nav className="nav nav-pills flex-column flex-sm-row">
             <a className={props.activeElement === "Monday" ? 'active flex-sm-fill text-sm-center nav-link' : 'flex-sm-fill text-sm-center nav-link'} onClick={(event)=>{event.preventDefault(); props.activeClass("Monday")}} href="#">Monday</a>
@@ -13,9 +10,7 @@ const Scrollspy = (props) => (
             <a className={props.activeElement === "Friday" ? 'active flex-sm-fill text-sm-center nav-link' : 'flex-sm-fill text-sm-center nav-link'} onClick={(event)=>{event.preventDefault(); props.activeClass("Friday")}} href="#">Friday</a>
             <a className={props.activeElement === "Saturday" ? 'active flex-sm-fill text-sm-center nav-link' : 'flex-sm-fill text-sm-center nav-link'} onClick={(event)=>{event.preventDefault(); props.activeClass("Saturday")}} href="#">Saturday</a>
             <a className={props.activeElement === "Sunday" ? 'active flex-sm-fill text-sm-center nav-link' : 'flex-sm-fill text-sm-center nav-link'} onClick={(event)=>{event.preventDefault(); props.activeClass("Sunday")}} href="#">Sunday</a>
-        </nav>
-        
-
+        </nav>      
 )
 
 export default Scrollspy

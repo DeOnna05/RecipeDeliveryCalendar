@@ -19,3 +19,8 @@
 .cardCol {
     margin:0px;
 }
+
+.card-img-top {
+    width: 272px;
+    height: 180px;
+}
