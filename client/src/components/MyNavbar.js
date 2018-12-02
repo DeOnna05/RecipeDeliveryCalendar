@@ -88,24 +88,41 @@ export default class MyNavbar extends React.Component{
 
     {/* Modal */}
     
-    <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}MODAL</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-          <ModalBody>
-
-          <select class="custom-select">
-            <option selected>Choose Category</option>
-            <option value="Breakfast">Breakfast</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Dinner">Dinner</option>
-          </select>
-
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>Submit</Button>{' '}
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
+      <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}MODAL</Button>
+      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <ModalHeader toggle={this.toggle}>Modify Recipe</ModalHeader>
+        <ModalBody>
+          <form>
+            <div class="form-group">
+              <select class="custom-select">
+                <option selected>Choose Category</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="imageUrl" placeholder="Paste Image URL"></input>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="recipeName" placeholder="Recipe Name"></input>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" id="caption" placeholder="Caption" rows="1"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" id="ingredients" placeholder="Ingredients List" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" id="directions" placeholder="Directions List" rows="3"></textarea>
+            </div>
+          </form>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={this.toggle}>Submit</Button>{' '}
+          <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
     </div>    
     )
   }

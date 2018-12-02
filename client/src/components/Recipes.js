@@ -15,9 +15,8 @@ const Recipes = (props) => {
                             <h5 className="card-title">{props.recipe.recipe_name}</h5>
                             <p className="card-text">{props.recipe.caption}</p>
                             <div className="card-footer">
-                            <a href="#" className="btn btn-danger cardBtn">Delete</a>
-                            <a href="#" className="btn btn-info cardBtn">Cook</a>
-                            <a href="#" className="btn btn-info cardBtn">Change</a>
+                            <a href="#" className="btn btn-danger cardBtn">Delete</a>  
+                            <a href="#" className="btn btn-info cardBtn">Modify</a>
                             </div>
                         </div>
                     </div>
