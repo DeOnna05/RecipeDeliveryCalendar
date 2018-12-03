@@ -13,11 +13,18 @@ const Recipes = (props) => {
                         <div className="card-body">
                             <h5 className="card-title">{props.recipe.recipe_name}</h5>
                             <p className="card-text">{props.recipe.caption}</p>
-                            <ul>{props.recipe.ingredients}</ul>
-                            <ol>{props.recipe.directions}</ol>
+                            <h6>Ingredients</h6>
+
+                            <ul>{props.recipe.ingredients.map((ingredient, i) => <li>{ingredient}</li>)}</ul>
+                            <h6>Directions</h6>
+
+
+                             <ol>{props.recipe.directions.map((directions, i) => <li>{directions}</li>)}</ol>
+
                             <div className="card-footer">
-                            <a href="#" className="btn btn-danger cardBtn">{props.delete}Delete</a>  
-                            <a href="#" className="btn btn-info cardBtn">Modify</a>
+                            <button className="btn btn-danger cardBtn"  onClick={()=> props.deleteRecipe(props.recipe._id)}>Delete</button>  
+
+                            <button onClick={()=> props.toggle(props.recipe._id)} className="btn btn-info cardBtn" >Modify</button>
                             </div>
                         </div>
                     </div>

@@ -65,8 +65,7 @@ router.post('/api/recipes/:day', function(req, res) {
 });
 
 router.put('/api/update/:id', function(req, res) {
-    console.log(req.params, "PUT REQ.PARAMS FOR UPDATE RECIPE")
-    db.recipes.findByIdAndUpdate({_id: req.params.id}).then(function(data){
+    db.recipes.findByIdAndUpdate(req.params.id, {$set: req.body} ).then(function(data){
         console.log(data)
         res.json(data);
     })
@@ -76,9 +75,9 @@ router.put('/api/update/:id', function(req, res) {
     });
 });
 
-router.delete('/api/delete/:id', function(req, res) {
+router.delete('/api/delete/:_id', function(req, res) {
     console.log(req.params, 'DELETE ROUTE')
-    db.recipes.findByIdAndDelete({_id: req.params.id}).then(function(data){
+    db.recipes.findByIdAndDelete(req.params._id).then(function(data){
         console.log(data)
         res.json(data);
     })

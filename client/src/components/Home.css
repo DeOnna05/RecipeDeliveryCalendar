@@ -1,13 +1,21 @@
-.background {
-  background: url('https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1027892/1360/906/m1/fpnw/wm1/jhy9bzssjwkt5o7fxskrktvwl694hyaz0seetflsve4uzxwz2fwo5cp2kveuxx1i-.jpg?1456439150&s=de86b1161aa3a97d66ecbc3e5dc0f262') no-repeat;
-  background-size: cover;
-  height: 100%;
+ html, body{
+  height:100% !important;
+
+  background: url('https://media-public.canva.com/MADE6lyUYuE/1/screen.jpg');
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   color: black;
 }
 
 .formBox {
   padding: 50px 60px;
-  margin-top: 10%;
+  margin-top: 45%;
+  background: whitesmoke;
   -webkit-box-shadow: 0px 4px 27px 10px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 4px 27px 10px rgba(0,0,0,0.75);
   box-shadow: 0px 4px 27px 10px rgba(0,0,0,0.75);

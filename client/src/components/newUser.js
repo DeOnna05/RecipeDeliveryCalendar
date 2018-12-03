@@ -48,13 +48,14 @@ export default class NewUser extends React.Component {
             alert('Please enter valid email address');
         }
        //ADD SECOND MODAL HERE SAYING ACCOUNT WAS CREATED SUCCESSFULLY PLEASE LOGIN
+           
+            alert("Your account was created successfully. Please sign.");
             window.location = "/"
-            
     }
 
     render() {
         return (
-            <Container fluid={true} className="background">
+            // <Container fluid={true} className="background">
                 <Row>
                     <Col md="4" sm="4" xs="12"></Col>
                     <Col md="4" sm="4" xs="12">
@@ -118,7 +119,7 @@ export default class NewUser extends React.Component {
                 </Col>
                 <Col md="4" sm="4" xs="12"></Col>
             </Row>
-        </Container>
+        // </Container>
 
         
         );
