@@ -119,6 +119,8 @@ export default class NewUser extends React.Component {
                 <Col md="4" sm="4" xs="12"></Col>
             </Row>
         </Container>
+
+        
         );
     }
 }

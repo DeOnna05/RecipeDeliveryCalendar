@@ -9,7 +9,8 @@ export default class MyNavbar extends React.Component{
   state = {
     recipes: [],
     activeElement: "Monday",
-    modal: false
+    modal: false,
+    updatedRecipe: []
   }
 
   componentDidMount(){
@@ -18,8 +19,6 @@ export default class MyNavbar extends React.Component{
 
   getRecipes = (day) =>{
     axios.post(`/api/recipes/${day}`).then(res => {
-      console.log(res.data[0])
-      console.log(res, "recipes")
       this.setState({
         recipes:res.data
       })
@@ -30,7 +29,6 @@ export default class MyNavbar extends React.Component{
     event.preventDefault();
     axios.get('/api/logout').then(res => {
       localStorage.removeItem('token');
-      console.log(res);
       window.location = '/';
     })
   }
@@ -51,6 +49,25 @@ export default class MyNavbar extends React.Component{
   });
 }
 
+updateRecipe = (event, id) => {
+  event.preventDefault();
+  axios.put(`/api/update/${id}`).then(res => {
+    console.log(res.data)
+    console.log(res, "updated recipe")
+    this.setState({
+      updatedRecipe:res.data
+    })
+  })
+}
+
+deleteRecipe = (event, id) => {
+  event.preventDefault();
+  axios.put(`/api/delete/${id}`).then(res => {
+    console.log(res.data)
+    console.log(res, "delete recipe")
+  })
+}
+
   render(){
   return (
 
@@ -66,7 +83,7 @@ export default class MyNavbar extends React.Component{
           <a className="nav-link" id="logoutTab" data-toggle="tab" href="/" role="tab" onClick={(event) => this.logout(event)}>Logout</a>
         </li>
         <li className="nav-item">
-          <a className="navbar-brand" id="logout" href="/"><img className="navLogo" src="/media/RecipeDeliveryLogo.png" alt="Logo" ></img></a>
+          <a className="navbar-brand" id="logoTab" href="/"><img className="navLogo" src="/media/RecipeDeliveryLogo.png" alt="Logo" ></img></a>
         </li>
       </ul>
 <br/>
@@ -93,33 +110,33 @@ export default class MyNavbar extends React.Component{
         <ModalHeader toggle={this.toggle}>Modify Recipe</ModalHeader>
         <ModalBody>
           <form>
-            <div class="form-group">
-              <select class="custom-select">
-                <option selected>Choose Category</option>
+            <div className="form-group">
+              <select className="custom-select">
+                <option defaultValue>Choose Category</option>
                 <option value="Breakfast">Breakfast</option>
                 <option value="Lunch">Lunch</option>
                 <option value="Dinner">Dinner</option>
               </select>
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="imageUrl" placeholder="Paste Image URL"></input>
+            <div className="form-group">
+              <input type="text" className="form-control" id="imageUrl" placeholder="Paste Image URL"></input>
             </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="recipeName" placeholder="Recipe Name"></input>
+            <div className="form-group">
+              <input type="text" className="form-control" id="recipeName" placeholder="Recipe Name"></input>
             </div>
-            <div class="form-group">
-              <textarea class="form-control" id="caption" placeholder="Caption" rows="1"></textarea>
+            <div className="form-group">
+              <textarea className="form-control" id="caption" placeholder="Caption" rows="1"></textarea>
             </div>
-            <div class="form-group">
-              <textarea class="form-control" id="ingredients" placeholder="Ingredients List" rows="3"></textarea>
+            <div className="form-group">
+              <textarea className="form-control" id="ingredients" placeholder="Ingredients List" rows="3"></textarea>
             </div>
-            <div class="form-group">
-              <textarea class="form-control" id="directions" placeholder="Directions List" rows="3"></textarea>
+            <div className="form-group">
+              <textarea className="form-control" id="directions" placeholder="Directions List" rows="3"></textarea>
             </div>
           </form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={this.toggle}>Submit</Button>{' '}
+          <Button color="info" onClick={(event) => this.updateRecipe(event)}>Submit</Button>{' '}
           <Button color="secondary" onClick={this.toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>

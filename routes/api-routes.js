@@ -26,14 +26,14 @@ router.post('/api/newUser', function(req, res) {
     })   
 });
 
-router.get('/api/user', VerifyToken, function(req, res, next) {
-    db.users.findById(req.userId, {password: 0}, function (error, user) {
-        console.log(req.userId)
-      if (error) return res.status(500).send("There was a problem finding the user.");
-      if (!user) return res.status(404).send("No user found.");      
-      res.status(200).send(user);
-    });
-  });
+// router.get('/api/user', VerifyToken, function(req, res, next) {
+//     db.users.findById(req.userId, {password: 0}, function (error, user) {
+//         console.log(req.userId)
+//       if (error) return res.status(500).send("There was a problem finding the user.");
+//       if (!user) return res.status(404).send("No user found.");      
+//       res.status(200).send(user);
+//     });
+//   });
 
 router.post('/api/login', function(req,res){
     db.users.findOne({username: req.body.username}, function(err, user){
@@ -53,11 +53,20 @@ router.post('/api/login', function(req,res){
     res.status(200).send({ auth: false, token: null });
   });
 
-//new recipe post route
-router.post('/api/recipes/:day', VerifyToken, function(req, res) {
+router.post('/api/recipes/:day', function(req, res) {
     //Check if there is a token - check header for token
-    console.log(req.params, "in get res")
     db.recipes.find({day: req.params.day}).then(function(data){
+        res.json(data);
+    })
+    .catch(function(error){
+        console.log(error)
+        res.json(error)
+    });
+});
+
+router.put('/api/update/:id', function(req, res) {
+    console.log(req.params, "PUT REQ.PARAMS FOR UPDATE RECIPE")
+    db.recipes.findByIdAndUpdate({_id: req.params.id}).then(function(data){
         console.log(data)
         res.json(data);
     })
@@ -66,5 +75,17 @@ router.post('/api/recipes/:day', VerifyToken, function(req, res) {
         res.json(error)
     });
 });
+
+router.delete('/api/delete/:id', function(req, res) {
+    console.log(req.params, 'DELETE ROUTE')
+    db.recipes.findByIdAndDelete({_id: req.params.id}).then(function(data){
+        console.log(data)
+        res.json(data);
+    })
+    .catch(function(error){
+        console.log(error)
+        res.json(error)
+    });
+  });
 
 module.exports = router;
