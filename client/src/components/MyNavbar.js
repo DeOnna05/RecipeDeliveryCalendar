@@ -104,6 +104,7 @@ deleteRecipe = (id) => {
         <li className="nav-item">
           <a className="nav-link" id="logoutTab" data-toggle="tab" href="/" role="tab" onClick={(event) => this.logout(event)}>Logout</a>
         </li>
+        <li className="nav-item"><a className="nav-link">Welcome DeOnna!</a></li>
         <li className="nav-item">
           <a className="navbar-brand" id="logoTab" href="/"><img className="navLogo" src="/media/RecipeDeliveryLogo.png" alt="Logo" ></img></a>
         </li>

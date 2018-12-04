@@ -1,10 +1,11 @@
  html, body{
   height:100% !important;
+ }
 
-  background: url('https://media-public.canva.com/MADE6lyUYuE/1/screen.jpg');
+  .background {
+  background: url('/media/backgroundImage.png');
     /* Full height */
-    height: 100%; 
-
+    height: 100vh; 
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -15,7 +16,7 @@
 .formBox {
   padding: 50px 60px;
   margin-top: 45%;
-  background: whitesmoke;
+  /* background: whitesmoke; */
   -webkit-box-shadow: 0px 4px 27px 10px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 4px 27px 10px rgba(0,0,0,0.75);
   box-shadow: 0px 4px 27px 10px rgba(0,0,0,0.75);

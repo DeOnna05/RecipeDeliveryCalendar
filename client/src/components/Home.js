@@ -37,7 +37,7 @@ export default class Home extends React.Component {
 
     render() {
         return (
-             <div className="background">
+             <Container fluid={true} className="background">
                 <Row>
                     <Col md="4" sm="4" xs="12"></Col>
                     <Col md="4" sm="4" xs="12">
@@ -74,7 +74,7 @@ export default class Home extends React.Component {
                     <Col md="4" sm="4" xs="12"></Col>
                 </Row>
               
-            </div >
+            </Container>
         )
     }
 }

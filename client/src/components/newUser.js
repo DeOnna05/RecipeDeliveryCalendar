@@ -55,7 +55,7 @@ export default class NewUser extends React.Component {
 
     render() {
         return (
-            // <Container fluid={true} className="background">
+            <Container fluid={true} className="background">
                 <Row>
                     <Col md="4" sm="4" xs="12"></Col>
                     <Col md="4" sm="4" xs="12">
@@ -119,7 +119,7 @@ export default class NewUser extends React.Component {
                 </Col>
                 <Col md="4" sm="4" xs="12"></Col>
             </Row>
-        // </Container>
+         </Container>
 
         
         );

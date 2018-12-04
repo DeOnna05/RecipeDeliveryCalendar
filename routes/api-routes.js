@@ -26,16 +26,16 @@ router.post('/api/newUser', function(req, res) {
     })   
 });
 
-// router.get('/api/user', VerifyToken, function(req, res, next) {
-//     db.users.findById(req.userId, {password: 0}, function (error, user) {
-//         console.log(req.userId)
-//       if (error) return res.status(500).send("There was a problem finding the user.");
-//       if (!user) return res.status(404).send("No user found.");      
-//       res.status(200).send(user);
-//     });
-//   });
+router.get('/api/user', VerifyToken, function(req, res, next) {
+    db.users.findById(req.userId, {password: 0}, function (error, user) {
+        console.log(req.userId)
+      if (error) return res.status(500).send("There was a problem finding the user.");
+      if (!user) return res.status(404).send("No user found.");      
+      res.status(200).send(user);
+    });
+  });
 
-router.post('/api/login', function(req,res){
+router.post('/api/login', VerifyToken, function(req,res){
     db.users.findOne({username: req.body.username}, function(err, user){
         console.log(user, "this is the user");
         if (err) return res.status(500).send('Error on the server.');
