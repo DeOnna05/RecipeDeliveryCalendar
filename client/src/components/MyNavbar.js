@@ -82,9 +82,8 @@ handleInput = (event) => {
 }
 
 deleteRecipe = (id) => {
-
-  const _id = this.state.updateId;
-  axios.put(`/api/delete/${_id}`).then(res => {
+  // const _id = this.state.updateId;
+  axios.put(`/api/delete/${id}`).then(res => {
     console.log(res.data)
     console.log(res, "delete recipe")
   })
@@ -98,9 +97,9 @@ deleteRecipe = (id) => {
         <li className="nav-item">
           <a className="nav-link active" id="menuTab" data-toggle="tab" href="/Menu" role="tab">Menu</a>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a className="nav-link" id="showAllTab" data-toggle="tab" href="#" role="tab">All Recipes</a>
-        </li>
+        </li> */}
         <li className="nav-item">
           <a className="nav-link" id="logoutTab" data-toggle="tab" href="/" role="tab" onClick={(event) => this.logout(event)}>Logout</a>
         </li>

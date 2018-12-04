@@ -22,9 +22,10 @@ const Recipes = (props) => {
                              <ol>{props.recipe.directions.map((directions, i) => <li>{directions}</li>)}</ol>
 
                             <div className="card-footer">
-                            <button className="btn btn-danger cardBtn"  onClick={()=> props.deleteRecipe(props.recipe._id)}>Delete</button>  
 
-                            <button onClick={()=> props.toggle(props.recipe._id)} className="btn btn-info cardBtn" >Modify</button>
+                            {/* <button className="btn btn-danger cardBtn"  onClick={()=> props.deleteRecipe(props.recipe._id)}>Delete</button>   */}
+
+                            <button onClick={()=> props.toggle(props.recipe._id)} className="btn btn-info cardBtn btn-block" >Modify</button>
                             </div>
                         </div>
                     </div>

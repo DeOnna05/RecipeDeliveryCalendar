@@ -87,4 +87,8 @@ router.delete('/api/delete/:_id', function(req, res) {
     });
   });
 
+//   router.get('/api/showAll', function(req, res) {
+   
+//   });
+
 module.exports = router;
