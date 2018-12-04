@@ -49,8 +49,8 @@ export default class NewUser extends React.Component {
         }
        //ADD SECOND MODAL HERE SAYING ACCOUNT WAS CREATED SUCCESSFULLY PLEASE LOGIN
            
-            alert("Your account was created successfully. Please sign.");
-            window.location = "/"
+            // alert("Your account was created successfully. Please sign in.");
+            // window.location = "/"
     }
 
     render() {

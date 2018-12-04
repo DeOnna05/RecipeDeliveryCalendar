@@ -51,7 +51,7 @@ export default class MyNavbar extends React.Component{
 }
 
 updateRecipe = (event) => {
-  event.preventDefault();
+  // event.preventDefault();
   const id = this.state.updateId;
   const updatedRecipe = {
     category:this.state.category,
@@ -68,6 +68,13 @@ updateRecipe = (event) => {
     this.setState({
       updatedRecipe:res.data
     })
+    this.getRecipes = (day) =>{
+      axios.post(`/api/recipes/${day}`).then(res => {
+        this.setState({
+          recipes:res.data
+        })
+      })
+    }
   })
 }
 
@@ -158,7 +165,7 @@ deleteRecipe = (id) => {
           </form>
         </ModalBody>
         <ModalFooter>
-          <Button color="info" onClick={(event) => this.updateRecipe(event)}>Submit</Button>{' '}
+  <Button color="info" onClick={(event) => {this.updateRecipe(event); this.toggle()}}>Submit</Button>{' '}
           <Button color="secondary" onClick={this.toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
